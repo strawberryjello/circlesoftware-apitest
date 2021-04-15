@@ -1,0 +1,2 @@
+class MonthlySalesReport < ApplicationRecord
+end
