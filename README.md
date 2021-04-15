@@ -83,27 +83,42 @@ createdb <devdb>;
 createdb <testdb>;
 ```
 
-# README
+## Loading csv data using Rake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Two Rake tasks (in `lib/tasks`) are available for loading csv data into their corresponding tables. They, along with the other Rake tasks bundled into Rails, can be viewed at the terminal by running `rake -T`.
 
-Things you may want to cover:
+- `csv_loader.rake` - Parses all csv files in the `data` directory, computes the gross profit for each item, and saves everything to the tables corresponding to items and transactions. Invoked by running `rake csv:load`. It expects the ff. column headers (note capitalization):
+  - APN code
+  - R.R.P. (recommended retail price)
+  - Last Buy Price
+  - Item description
+  - Product Category
+  - Actual Stock On Hand
+  - Trans Date
+  - Trans Time
+  - Trans Document Number
+  - Trans Reference Number
+  - Trans Quantity
+  - Trans Total extax value
+  - Trans Total tax
+  - Trans Total discount given
 
-* Ruby version
+- `report.rake` - Computes the monthly gross profit and total extax sales via a query and saves them to the table for monthly sales reports. Invoked by running `rake report:create`.
 
-* System dependencies
+Each task uses Ruby's [Benchmark module](https://ruby-doc.org/stdlib-2.7.2/libdoc/benchmark/rdoc/Benchmark.html) to measure the amount of time elapsed in seconds, which can be used as a starting point for future performance improvements.
 
-* Configuration
+## Tests
 
-* Database creation
+Tests are written in RSpec and can be run using the `rspec` command.
 
-* Database initialization
+It is also possible to manually inspect what the API returns by running the server using `rails server` (shortcut: `rails s`) and querying the API via the ff.:
 
-* How to run the test suite
+- Visiting `localhost:3000/monthly_sales_reports` in a browser
 
-* Services (job queues, cache servers, search engines, etc.)
+- Using `curl` (if you have it installed) in the terminal:
 
-* Deployment instructions
-
-* ...
+  ```
+  curl localhost:3000/monthly_sales_reports
+  ```
+  
+  - The output can be redirected to a file for easier viewing by appending ` > ` (note the spaces) and a filename (for example, `output.json`) to the above command. The file will be created if it doesn't exist; if it does, its contents will be overwritten.
