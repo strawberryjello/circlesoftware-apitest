@@ -1,6 +1,6 @@
 # Circle Software API test
 
-Sample API that returns the monthly ex tax sales and gross profit grouped by year. See the companion sample frontend [here](insert link here). Sample csv data is in the `data` directory.
+Sample API that returns the monthly ex tax sales and gross profit grouped by year. Sample csv data is in the `data` directory.
 
 ## System Requirements
 
@@ -109,9 +109,19 @@ Each task uses Ruby's [Benchmark module](https://ruby-doc.org/stdlib-2.7.2/libdo
 
 ## Tests
 
-Tests are written in RSpec and can be run using the `rspec` command.
+Tests are written in RSpec and can be run using the `rspec` command. Make sure that the test database has been created before running the tests.
 
-It is also possible to manually inspect what the API returns by running the server using `rails server` (shortcut: `rails s`) and querying the API via the ff.:
+## Viewing the Data
+
+A simple UI for viewing the data returned by the API is available:
+
+- Run the server using `rails server` / `rails s`
+
+- Visit `localhost:3000`
+
+The data will be displayed in tables grouped by year, in descending order.
+
+It is also possible to manually inspect what the API returns by running the server and querying the API via the ff.:
 
 - Visiting `localhost:3000/monthly_sales_reports` in a browser
 
@@ -121,4 +131,4 @@ It is also possible to manually inspect what the API returns by running the serv
   curl localhost:3000/monthly_sales_reports
   ```
   
-  - The output can be redirected to a file for easier viewing by appending ` > ` (note the spaces) and a filename (for example, `output.json`) to the above command. The file will be created if it doesn't exist; if it does, its contents will be overwritten.
+  - The output can be redirected to a file for easier viewing by using `>` and specifying a filename (for example, `curl localhost:3000/monthly_sales_reports > output.json`). The file will be created if it doesn't exist; if it does, its contents will be overwritten.
