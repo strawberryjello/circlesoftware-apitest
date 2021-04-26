@@ -1,8 +1,8 @@
 class MonthlySalesReportsController < ApplicationController
 
-  # GET /annual_sales_reports
+  # GET /monthly_sales_reports
   def index
-    @reports = MonthlySalesReport.all
+    @reports = MonthlySalesReport.all_grouped_by_year
     render json: @reports
   end
 end
