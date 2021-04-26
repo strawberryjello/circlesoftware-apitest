@@ -19,7 +19,7 @@ namespace :csv do
           txn_quantity = row["Trans Quantity"].to_i
           total_extax_value = BigDecimal(row["Trans Total extax value"])
           total_tax = BigDecimal(row["Trans Total tax"])
-          profit = (total_extax_value + total_tax) - (last_buy_price * txn_quantity)
+          profit = total_extax_value - (last_buy_price * txn_quantity)
 
           item = Item.create(
             apn: row["APN code"],
