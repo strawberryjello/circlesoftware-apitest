@@ -11,6 +11,22 @@ This was developed using the ff. on Linux (openSUSE Leap 15.1):
 
 It hasn't been tested using other versions, though as far as I'm aware I haven't used any version-dependent features.
 
+## Setup
+
+- [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/), either directly or via a version manager such as [rbenv](https://github.com/rbenv/rbenv)
+
+- Clone this repository
+
+- Install and set up PostgreSQL, then create the databases (see the [Database Setup](https://github.com/strawberryjello/circlesoftware-apitest#database-setup) section below)
+
+- Run `bundle install` in the repository's root directory
+
+- Load the csv data into the database by running `rake csv:load` and `rake report:create` in order; this will likely take several minutes, see the section [Loading csv data using Rake](https://github.com/strawberryjello/circlesoftware-apitest#loading-csv-data-using-rake)
+
+- Run the tests using `rspec`
+
+- You can view the data returned by the API by using the included UI or by querying the API directly, see the section [Viewing the Data](https://github.com/strawberryjello/circlesoftware-apitest#viewing-the-data)
+
 ## Database Setup
 
 ### PostgreSQL installation
