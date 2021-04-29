@@ -2,6 +2,8 @@
 
 Sample API that returns the monthly ex tax sales and gross profit grouped by year. Sample csv data is in the `data` directory.
 
+The API is currently [deployed on Heroku](https://circlesoftware-api.herokuapp.com/monthly_sales_reports); a simple UI for viewing the data can be found [here](https://circlesoftware-api.herokuapp.com/).
+
 ## System Requirements
 
 This was developed using the ff. on Linux (openSUSE Leap 15.1):
@@ -25,7 +27,7 @@ It hasn't been tested using other versions, though as far as I'm aware I haven't
 
 - Run the tests using `rspec`
 
-- You can view the data returned by the API by using the included UI or by querying the API directly, see the section [Viewing the Data](https://github.com/strawberryjello/circlesoftware-apitest#viewing-the-data)
+- You can view the data returned by the API by using the included UI or by querying the API directly, see the section [Viewing the Data Locally](https://github.com/strawberryjello/circlesoftware-apitest#viewing-the-data-locally)
 
 ## Database Setup
 
@@ -127,7 +129,7 @@ Each task uses Ruby's [Benchmark module](https://ruby-doc.org/stdlib-2.7.2/libdo
 
 Tests are written in RSpec and can be run using the `rspec` command. Make sure that the test database has been created before running the tests.
 
-## Viewing the Data
+## Viewing the Data Locally
 
 A simple UI for viewing the data returned by the API is available:
 
